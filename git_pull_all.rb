@@ -8,12 +8,10 @@ repos = [
 ]
 
 repos.each do |r|
-  Dir.chdir("#{r}") do
-    begin
-      puts "Pulling the #{r} repo...\n"
-      system( "git pull origin master" )
-    rescue
-      puts "Failed to pull #{r}."
-    end
+  begin
+    puts "Pulling the #{r} repo...\n"
+    system( "git pull origin master" )
+  rescue
+    puts "Failed to pull #{r}."
   end
 end
