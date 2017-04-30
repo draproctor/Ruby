@@ -9,7 +9,8 @@ repos = [
 
 repos.each do |r|
   begin
-    puts "Pulling the #{r} repo...\n"
+    puts "Pulling the #{r} repo..."
+    system( "cd #{r}")
     system( "git pull origin master" )
   rescue
     puts "Failed to pull #{r}."
