@@ -13,16 +13,17 @@ def archive_dir?
 end
 
 # for each item in the screenshot dir, move to archived screenshots dir
-def move_scrnshts
+def move_captures
   scrn_dir = '/Users/' + @username + '/Desktop'
   contents = Dir.entries(scrn_dir)
   contents.each do |file|
     if (File.extname(file).include? ".png") && (file.include? "Screen Shot")
       file_src = scrn_dir + '/' + file
+      puts 'Moving ' + file + 'to archived captures.'
       FileUtils.mv(file_src, archive_dir?())
     end
   end
 end
 
 archive_dir?()
-move_scrnshts()
+move_captures()
