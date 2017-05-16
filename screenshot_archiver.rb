@@ -6,7 +6,7 @@ require 'fileutils'
 
 # Created an archived screenshots folder
 def archive_dir?
-  archive_folder = '/Users/'+@username+'/Documents/Archived Screenshots'
+  archive_folder = '/Users/' + @username + '/Documents/Archived Screenshots'
   unless Dir.exist?(archive_folder)
     Dir.mkdir(archive_folder)
   end
