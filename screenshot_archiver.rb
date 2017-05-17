@@ -16,7 +16,7 @@ def move_captures
   contents = Dir.entries(scrn_dir)
   contents.each do |file|
     if (File.extname(file).include? ".png") && (file.include? "Screen Shot")
-      file_src = scrn_dir + '/' + file
+      file_src = "#{scrn_dir}/#{file}"
       puts 'Moving #{file} to archived captures.'
       FileUtils.mv(file_src, archive_dir?())
     end
