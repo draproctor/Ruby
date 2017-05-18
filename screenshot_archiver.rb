@@ -1,7 +1,6 @@
 # Organize all screenshots into folders
 require 'fileutils'
 require 'time'
-require 'whenever'
 
 @username = ENV['USER']
 
