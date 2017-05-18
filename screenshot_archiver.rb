@@ -17,7 +17,7 @@ def sub_dir
   time = Time.now
   dir_name = "Archive #{time.month}-#{time.day}-#{time.year}"
   sub_dir_name = "#{archive_dir}/#{dir_name}"
-  
+
   Dir.mkdir(sub_dir_name) unless Dir.exist?(sub_dir_name)
   return sub_dir_name
 end
@@ -48,7 +48,7 @@ def mk_log
   log_file = "#{log_dir}/Archive Log.txt"
   File.new(log_file, "w+") unless File.exist?(log_file)
   File.open(log_file, "a") do |line|
-    line.puts "\r" + "Moved #{move_captures} items on #{log_name}"
+    line.puts "Moved #{move_captures} items on #{log_name}"
   end
 end
 
