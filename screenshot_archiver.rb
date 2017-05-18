@@ -17,6 +17,7 @@ def sub_dir
   time = Time.now
   dir_name = "Archive #{time.month}-#{time.day}-#{time.year}"
   sub_dir_name = "#{archive_dir}/#{dir_name}"
+  
   Dir.mkdir(sub_dir_name) unless Dir.exist?(sub_dir_name)
   return sub_dir_name
 end
@@ -26,6 +27,7 @@ def move_captures
   iterations = 0
   scrn_dir = "/Users/#{@username}/Desktop"
   contents = Dir.entries(scrn_dir)
+
   contents.each do |file|
     if (File.extname(file).include? ".png") && (file.include? "Screen Shot")
       file_src = "#{scrn_dir}/#{file}"
