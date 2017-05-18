@@ -47,7 +47,7 @@ def mk_log
   log_file = "#{log_dir}/Archive Log.txt"
   File.new(log_file, "w+") unless File.exist?(log_file)
   File.open(log_file, "a") do |line|
-    line.puts "Moved #{move_captures} items on #{log_name}"
+    line.puts "Moved #{move_captures()} items on #{log_name}"
   end
 end
 
