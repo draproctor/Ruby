@@ -23,6 +23,7 @@ end
 
 # for each item in the screenshot dir, move to archived screenshots dir
 def move_captures
+  iterations = 0
   scrn_dir = "/Users/#{@username}/Desktop"
   contents = Dir.entries(scrn_dir)
   contents.each do |file|
@@ -30,9 +31,24 @@ def move_captures
       file_src = "#{scrn_dir}/#{file}"
       puts "Moving #{file} to archived captures."
       FileUtils.mv(file_src, sub_dir())
+      iterations += 1
     end
+  end
+  return iterations
+end
+
+def mk_log
+  log_t = Time.now
+  log_name = "#{log_t.month}/#{log_t.day}/#{log_t.year} at #{log_t.hour}:00"
+  log_dir = "#{archive_dir()}/.archive_logs"
+  Dir.mkdir(log_dir) unless Dir.exist?(log_dir)
+
+  log_file = "#{log_dir}/Archive Log.txt"
+  File.new(log_file, "w+") unless File.exist?(log_file)
+  File.open(log_file, "a") do |line|
+    line.puts "\r" + "Moved #{move_captures} items on #{log_name}"
   end
 end
 
 sub_dir()
-move_captures()
+mk_log()
