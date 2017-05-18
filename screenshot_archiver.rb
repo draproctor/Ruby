@@ -1,11 +1,12 @@
 # Organize all screenshots into folders
 require 'fileutils'
 require 'time'
+require 'whenever'
 
 @username = ENV['USER']
 
 # Created an archived screenshots folder
-def archive_dir?
+def archive_dir
   archive_folder = "/Users/#{@username}/Documents/Archived Screenshots"
   Dir.mkdir(archive_folder) unless Dir.exist?(archive_folder)
   return archive_folder
@@ -15,7 +16,7 @@ end
 def sub_dir
   time = Time.now
   dir_name = "Archive #{time.month}-#{time.day}-#{time.year}"
-  sub_dir_name = "#{archive_dir?}/#{dir_name}"
+  sub_dir_name = "#{archive_dir}/#{dir_name}"
   Dir.mkdir(sub_dir_name) unless Dir.exist?(sub_dir_name)
   return sub_dir_name
 end
@@ -33,6 +34,5 @@ def move_captures
   end
 end
 
-archive_dir?()
 sub_dir()
 move_captures()
