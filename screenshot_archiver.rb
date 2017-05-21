@@ -4,6 +4,9 @@ require 'time'
 
 @username = ENV['USER']
 
+# Log sorting is done by current time/date. Declaring this early saves space.
+@t = Time.now
+
 # Created an archived screenshots folder
 def archive_dir
   archive_folder = "/Users/#{@username}/Documents/Archived Screenshots"
@@ -13,8 +16,7 @@ end
 
 # Organize all screenshots into folders for a specific day
 def sub_dir(ad)
-  time = Time.now
-  dir_name = "Archive #{time.month}-#{time.day}-#{time.year}"
+  dir_name = "Archive #{@t.month}-#{@t.day}-#{@t.year}"
   sub_dir_name = "#{ad}/#{dir_name}"
 
   Dir.mkdir(sub_dir_name) unless Dir.exist?(sub_dir_name)
@@ -38,10 +40,11 @@ def move_captures
   return iterations
 end
 
-def mk_log(mc)
-  log_t = Time.now
-  log_name = "#{log_t.month}/#{log_t.day}/#{log_t.year} at #{log_t.hour}:00"
-  log_dir = "#{archive_dir()}/.archive_logs"
+# Make a hiddle folder for saving the archive logs and edit the log to include
+# number of items moved, what day, and at what time.
+def mk_log(ad, mc)
+  log_name = "#{@t.month}/#{@t.day}/#{@t.year} at #{@t.hour}:#{@t.min}"
+  log_dir = "#{ad}/.archive_logs"
   Dir.mkdir(log_dir) unless Dir.exist?(log_dir)
 
   log_file = "#{log_dir}/Archive Log.txt"
@@ -52,4 +55,4 @@ def mk_log(mc)
 end
 
 sub_dir(archive_dir())
-mk_log(move_captures())
+mk_log(archive_dir(),move_captures())
