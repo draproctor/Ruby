@@ -12,10 +12,10 @@ def archive_dir
 end
 
 # Organize all screenshots into folders for a specific day
-def sub_dir
+def sub_dir(ad)
   time = Time.now
   dir_name = "Archive #{time.month}-#{time.day}-#{time.year}"
-  sub_dir_name = "#{archive_dir}/#{dir_name}"
+  sub_dir_name = "#{ad}/#{dir_name}"
 
   Dir.mkdir(sub_dir_name) unless Dir.exist?(sub_dir_name)
   return sub_dir_name
@@ -38,7 +38,7 @@ def move_captures
   return iterations
 end
 
-def mk_log
+def mk_log(mc)
   log_t = Time.now
   log_name = "#{log_t.month}/#{log_t.day}/#{log_t.year} at #{log_t.hour}:00"
   log_dir = "#{archive_dir()}/.archive_logs"
@@ -47,9 +47,9 @@ def mk_log
   log_file = "#{log_dir}/Archive Log.txt"
   File.new(log_file, "w+") unless File.exist?(log_file)
   File.open(log_file, "a") do |line|
-    line.puts "Moved #{move_captures()} items on #{log_name}"
+    line.puts "Moved #{mc} items on #{log_name}"
   end
 end
 
-sub_dir()
-mk_log()
+sub_dir(archive_dir())
+mk_log(move_captures())
