@@ -50,7 +50,7 @@ def mk_log(ad, mc)
 
   log_file = "#{log_dir}/Archive Log.txt"
   File.new(log_file, "w+") unless File.exist?(log_file)
-  # `a` is for append. This appends a file to the end of the file.
+  # `a` is for `append`. This appends a new line to the end of the file.
   File.open(log_file, "a") do |line|
     line.puts "Moved #{mc} items on #{log_name}"
   end
