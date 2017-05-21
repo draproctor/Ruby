@@ -25,6 +25,7 @@ end
 
 # for each item in the screenshot dir, move to archived screenshots dir
 def move_captures
+  # this is for counting the number of objects moved. Starts at zero.
   iterations = 0
   scrn_dir = "/Users/#{@username}/Desktop"
   contents = Dir.entries(scrn_dir)
@@ -49,6 +50,7 @@ def mk_log(ad, mc)
 
   log_file = "#{log_dir}/Archive Log.txt"
   File.new(log_file, "w+") unless File.exist?(log_file)
+  # `a` is for append. This appends a file to the end of the file.
   File.open(log_file, "a") do |line|
     line.puts "Moved #{mc} items on #{log_name}"
   end
