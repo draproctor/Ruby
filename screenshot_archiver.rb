@@ -13,7 +13,6 @@ require 'time'
 def archive_dir
   archive_folder = "/Users/#{@username}/Documents/Archived Screenshots"
   Dir.mkdir(@archive_folder) unless Dir.exist?(@archive_folder)
-  return archive_folder
 end
 
 # Organize all screenshots into folders for a specific day
