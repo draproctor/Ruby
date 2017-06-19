@@ -34,24 +34,24 @@ def post_tax_income()
     puts 'Invalid yearly income entered. Please enter a valid integer.'
   end
 
-  paycheck_pre = yearly / 26
-  paycheck_post = post_tax / 26
+  paycheck_pre = (yearly / 26).round(2)
+  paycheck_post = (post_tax / 26).round(2)
   puts "\n$#{paycheck_pre} per paycheck pre-taxes."
   puts "$#{paycheck_post} per paycheck post-taxes."
 
-  monthly = post_tax / 12
-  max_rent = monthly / 3
+  monthly = (post_tax / 12).round(2)
+  max_rent = (monthly / 3).round(2)
   puts "\n$#{monthly} per month after taxes."
   puts "$#{max_rent} is the maximum rent cost."
 
-  monthly_post_rent = monthly - rent
+  monthly_post_rent = (monthly - rent).round(2)
   puts "$#{monthly_post_rent} per month after rent."
 
-  monthly_post_bills = monthly - rent - bills
+  monthly_post_bills = (monthly - rent - bills).round(2)
   puts "$#{monthly_post_bills} per month after all expenses."
 
   # Assuming 30 days in a month.
-  daily_post = monthly_post_bills / 30
+  daily_post = (monthly_post_bills / 30).round(2)
   puts "\n$#{daily_post} can be spent on whatever you want per day."
 end
 
