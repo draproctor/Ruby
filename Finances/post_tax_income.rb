@@ -7,28 +7,27 @@ def post_tax_income()
   bills = gets.chomp.to_i
 
   # This is assuming single taxable income for 2017.
-  first_bracket = yearly - (0.10 * yearly)
-  second_bracket = yearly - (932 + 0.15 * (yearly - 9325))
-  third_bracket = yearly - (5226 + 0.24 * (yearly - 37950))
-  fourth_bracket = yearly - (18713 + 0.28 * (yearly - 91900))
-  fifth_bracket = yearly - (46643 + 0.33 * (yearly - 191650))
-  sixth_bracket = yearly - (120910 + 0.35 * (yearly - 416700))
-  seventh_bracket = yearly - (121505 + 0.396 * (yearly - 418400))
-
   case
-  when yearly < 9325
+  when yearly < 9325 
+    first_bracket = yearly - (0.10 * yearly)
     post_tax = first_bracket
   when yearly > 9326 && yearly < 37950
+    second_bracket = yearly - (932 + 0.15 * (yearly - 9325))
     post_tax = second_bracket
   when yearly > 37951 && yearly < 91900
+    third_bracket = yearly - (5226 + 0.24 * (yearly - 37950))
     post_tax = third_bracket
   when yearly > 91901 && yearly < 191650
+    fourth_bracket = yearly - (18713 + 0.28 * (yearly - 91900))
     post_tax = fourth_bracket
   when yearly > 191651 && yearly < 416700
+    fifth_bracket = yearly - (46643 + 0.33 * (yearly - 191650))
     post_tax = fifth_bracket
   when yearly > 416701 && yearly < 418400
+    sixth_bracket = yearly - (120910 + 0.35 * (yearly - 416700))
     post_tax = sixth_bracket
   when yearly > 418400
+    seventh_bracket = yearly - (121505 + 0.396 * (yearly - 418400))
     post_tax = seventh_bracket
   else
     puts 'Invalid yearly income entered. Please enter a valid integer.'
