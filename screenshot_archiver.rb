@@ -57,5 +57,6 @@ def mk_log(mc)
   end
 end
 
+archive_dir()
 sub_dir()
 mk_log(move_captures())
