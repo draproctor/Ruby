@@ -28,6 +28,8 @@ end
 def move_captures
   # this is for counting the number of objects moved. Starts at zero.
   iterations = 0
+  # scrn_dir is the default screenshot save location on OS X.
+  # This can be changed to fit your OS's default or your preferences.
   scrn_dir = "/Users/#{@username}/Desktop"
   contents = Dir.entries(scrn_dir)
 
