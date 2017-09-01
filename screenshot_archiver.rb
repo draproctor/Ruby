@@ -1,3 +1,5 @@
+# https://github.com/draproctor/Ruby/blob/master/screenshot_archiver.rb
+
 # Organize all screenshots into folders
 require 'fileutils'
 require 'time'
@@ -8,12 +10,8 @@ require 'time'
 @t = Time.now
 @archive_folder = "/Users/#{@username}/Documents/Archived Screenshots"
 
-
 # Created an archived screenshots folder
-def archive_dir
-  archive_folder = "/Users/#{@username}/Documents/Archived Screenshots"
-  Dir.mkdir(@archive_folder) unless Dir.exist?(@archive_folder)
-end
+Dir.mkdir(@archive_folder) unless Dir.exist?(@archive_folder)
 
 # Organize all screenshots into folders for a specific day
 def sub_dir
@@ -34,10 +32,10 @@ def move_captures
   contents = Dir.entries(scrn_dir)
 
   contents.each do |file|
-    if (File.extname(file).include? ".png") && (file.include? "Screen Shot")
+    if (File.extname(file).include? '.png') && (file.include? 'Screen Shot')
       file_src = "#{scrn_dir}/#{file}"
       puts "Moving #{file} to archived captures."
-      FileUtils.mv(file_src, sub_dir())
+      FileUtils.mv(file_src, sub_dir)
       iterations += 1
     end
   end
@@ -52,13 +50,12 @@ def mk_log(mc)
   Dir.mkdir(log_dir) unless Dir.exist?(log_dir)
 
   log_file = "#{log_dir}/Archive Log.txt"
-  File.new(log_file, "w+") unless File.exist?(log_file)
+  File.new(log_file, 'w+') unless File.exist?(log_file)
   # `a` is for `append`. This appends a new line to the end of the file.
-  File.open(log_file, "a") do |line|
+  File.open(log_file, 'a') do |line|
     line.puts "Moved #{mc} items on #{log_name}"
   end
 end
 
-archive_dir()
-sub_dir()
-mk_log(move_captures())
+sub_dir
+mk_log(move_captures)
