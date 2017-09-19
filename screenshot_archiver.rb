@@ -1,6 +1,3 @@
-# https://github.com/draproctor/Ruby/blob/master/screenshot_archiver.rb
-
-# Organize all screenshots into folders
 require 'fileutils'
 require 'time'
 
@@ -10,7 +7,7 @@ require 'time'
 @t = Time.now
 @archive_folder = "/Users/#{@username}/Documents/Archived Screenshots"
 
-# Created an archived screenshots folder
+# Create an archived screenshots folder
 Dir.mkdir(@archive_folder) unless Dir.exist?(@archive_folder)
 
 # Organize all screenshots into folders for a specific day
@@ -27,7 +24,6 @@ def move_captures
   # this is for counting the number of objects moved. Starts at zero.
   iterations = 0
   # scrn_dir is the default screenshot save location on OS X.
-  # This can be changed to fit your OS's default or your preferences.
   scrn_dir = "/Users/#{@username}/Desktop"
   contents = Dir.entries(scrn_dir)
 
@@ -42,7 +38,7 @@ def move_captures
   return iterations
 end
 
-# Make a hiddle folder for saving the archive logs and edit the log to include
+# Make a hidden folder for saving the archive logs and edit the log to include
 # number of items moved, what day, and at what time.
 def mk_log(mc)
   log_name = "#{@t.month}/#{@t.day}/#{@t.year} at #{@t.hour}:#{@t.min}"
