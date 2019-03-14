@@ -1,2 +1,2 @@
 # Ruby
-Ruby scripts. Usefulness not guaranteed.
+Ruby scripts I've worked on.
